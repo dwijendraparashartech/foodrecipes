@@ -10,7 +10,7 @@ const Header = props => {
         <div className="input-group w-50 mx-auto ">
             <input type="text" 
             className="form-control" 
-            placeholder="Search Your Recipe" 
+            placeholder="Search Your Recipe..." 
             value={props.search}
             onChange={props.onInputChange}
             

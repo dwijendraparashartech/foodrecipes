@@ -1,20 +1,20 @@
 import React from "react";
+import RecipeItem from "./RecipeItem";
 
 const Recipes = props => {
-  const {recipes} =props;
+  const { recipes } = props;
   return (
-    <div class="row">
-      {recipes.map(recipe =>(
-        <div className="col-sm-3">
-          <div className="card">
-         <div className="card-body">
-           <h4>{recipe.recipe.label}</h4>
-      </div>
-      </div>
-    </div>
+    <div class="card-columns">
+      {recipes.map(recipe => (
+        <RecipeItem
+          key={Math.random() * 100}
+          name={recipe.recipe.label}
+          image={recipe.recipe.image}
+          ingredientLines={recipe.recipe.ingredientLines}
+        />
       ))}
-      </div>
+    </div>
   );
-}
+};
 
 export default Recipes;

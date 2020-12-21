@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/Header";
 import Recipes from "./components/Recipes";
 import Axios from "axios";
+// var cors = require('cors');
 
 
 function App() {
@@ -11,10 +12,10 @@ function App() {
   const[search,setSearch]= useState("chiken");
   const[recipes,setRecipes]= useState([]);
 
-  const APP_ID = "f309272e";
-  const APP_KEY = "fec590c68b6141761844028513175c47";
+  const APP_ID = "1cc33170";
+  const APP_KEY = "8cbcfd53b5ece81de87357741323e644";
 
-  useEffect(async ()=>{
+  useEffect(()=>{
      getRecipes();
     },[]);
 
@@ -25,14 +26,24 @@ function App() {
       setRecipes(res.data.hits);
     }
   const onInputChange = e => {
-    setSearch(e.target.value)  }
+    setSearch(e.target.value)  
+  };
+
+  const onSearchClick=()=>{
+    getRecipes();
+  }
   return (
     <div className="App">
-        <Header search={search} onInputChange={onInputChange} />
+        <Header 
+        search={search} 
+        onInputChange={onInputChange} 
+        onSearchClick={onSearchClick} 
+        />
         <div className="container">
           <Recipes recipes={recipes} />
         </div>
     </div>
   );
 }
+
 export default App;
